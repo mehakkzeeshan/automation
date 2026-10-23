@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Outlyne AI | Autonomous Banking Growth Engine</title>
+<meta name="description" content="AI-powered outbound client acquisition for banks, with mandatory human officer approval.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Outlyne AI: AI drafts the outreach, your officer approves every message">
+<meta property="og:description" content="Outbound client acquisition for banks with mandatory officer sign-off, role-based access and a full audit trail.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+<style>
+  :root { color-scheme: dark; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 5rem); }
+  body { font-family: 'DM Sans', system-ui, sans-serif; overflow-x: hidden; background: #020617; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: #020617; z-index: 50; }
+  .font-display { font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; letter-spacing: -0.02em; }
+  section[id] { scroll-margin-top: 6rem; }
+  .is-hidden { display: none !important; }
+  .portal-tab { display: none; } .portal-tab.active { display: block; }
+  :focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }
+  .card { background: linear-gradient(180deg, rgb(30 41 59 / .55), rgb(15 23 42 / .75)); border: 1px solid rgb(51 65 85 / .6); border-radius: 1rem; backdrop-filter: blur(8px); }
+  .lift { transition: transform .3s, border-color .3s, box-shadow .3s; }
+  .lift:hover { transform: translateY(-4px); border-color: rgb(96 165 250 / .6); box-shadow: 0 22px 40px -22px rgb(59 130 246 / .55); }
+  .ico { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: .75rem; background: linear-gradient(135deg, rgb(37 99 235 / .25), rgb(99 102 241 / .1)); border: 1px solid rgb(99 102 241 / .3); }
+  .inp { width: 100%; background: #020617; border: 1px solid #1e293b; border-radius: .75rem; padding: .75rem 1rem; color: #fff; font-size: .875rem; }
+  .inp::placeholder { color: #475569; }
+  .inp:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgb(59 130 246 / .2); }
+  .inp:user-invalid { border-color: #f43f5e; }
+  .lbl { display: block; font-size: .875rem; color: #cbd5e1; margin-bottom: .375rem; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-weight: 600; font-size: .875rem; border-radius: .75rem; padding: .8rem 1.5rem; transition: filter .2s, transform .2s, background .2s; }
+  .btn:disabled { opacity: .6; cursor: not-allowed; }
+  .btn-p { background: linear-gradient(135deg, #2563eb, #6366f1); color: #fff; box-shadow: 0 12px 28px -12px #3b82f6; }
+  .btn-p:hover:not(:disabled) { filter: brightness(1.12); transform: translateY(-1px); }
+  .btn-g { background: rgb(15 23 42 / .8); border: 1px solid #1e293b; color: #cbd5e1; }
+  .btn-g:hover { background: #1e293b; }
+  .btn-ok { background: linear-gradient(135deg, #059669, #0d9488); color: #fff; }
+  .gt { background: linear-gradient(90deg, #60a5fa, #a78bfa 55%, #34d399); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .orb { position: absolute; border-radius: 9999px; filter: blur(80px); opacity: .35; animation: drift 14s ease-in-out infinite alternate; pointer-events: none; }
+  .gridbg { background-image: radial-gradient(rgb(148 163 184 / .2) 1px, transparent 1px); background-size: 26px 26px; -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 25%, transparent 72%); mask-image: radial-gradient(ellipse at 50% 30%, #000 25%, transparent 72%); }
+  .sheen { background: linear-gradient(100deg, transparent 30%, rgb(255 255 255 / .12) 50%, transparent 70%); background-size: 250% 100%; animation: sheen 3.5s linear infinite; }
+  .float { animation: bob 6s ease-in-out infinite; }
+  .flow path { stroke-dasharray: 6 8; animation: dash 1.2s linear infinite; }
+  .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .rv.in { opacity: 1; transform: none; }
+  .text-slate-400 { color: #b4c0d3; } .text-slate-500 { color: #94a3b8; } .hover\:text-white:hover { color: #fff; }
+  .faq summary { cursor: pointer; list-style: none; } .faq summary::-webkit-details-marker { display: none; }
+  .faq details[open] .chev { transform: rotate(180deg); } .chev { transition: transform .2s; }
+  dialog::backdrop { background: rgb(2 6 23 / .8); backdrop-filter: blur(4px); }
+  .tn { padding: .5rem .75rem; border-radius: .6rem; font-size: .8125rem; font-weight: 500; color: #cbd5e1; white-space: nowrap; transition: background .2s, color .2s; }
+  .tn:hover, .tn.active { background: #1e293b; color: #fff; }
+  .pnav { display: flex; align-items: center; gap: .75rem; padding: .7rem 1rem; border-radius: .75rem; font-size: .875rem; font-weight: 500; color: #94a3b8; white-space: nowrap; flex-shrink: 0; transition: background .2s, color .2s; }
+  .pnav:hover { background: #1e293b; color: #fff; }
+  .pnav.on { background: linear-gradient(135deg, #2563eb, #6366f1); color: #fff; }
+  .chip { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem .85rem; border: 1px solid #1e293b; border-radius: 9999px; font-size: .8rem; color: #cbd5e1; cursor: pointer; background: #020617; }
+  .chip:has(input:checked) { border-color: #3b82f6; background: rgb(37 99 235 / .2); color: #fff; }
+  .plan { cursor: pointer; } .plan.sel { border-color: #818cf8; box-shadow: 0 0 0 2px rgb(129 140 248 / .45); }
+  .sdot { width: 2rem; height: 2rem; border-radius: 9999px; display: grid; place-items: center; font-size: .75rem; font-weight: 700; background: #0f172a; border: 1px solid #334155; color: #94a3b8; flex-shrink: 0; }
+  .sdot.on { background: linear-gradient(135deg, #2563eb, #6366f1); color: #fff; border-color: transparent; }
+  .sdot.done { background: #059669; color: #fff; border-color: transparent; }
+  input[type=range] { accent-color: #6366f1; width: 100%; }
+  @keyframes drift { to { transform: translate(40px, -50px) scale(1.12); } }
+  @keyframes bob { 50% { transform: translateY(-10px); } }
+  @keyframes sheen { to { background-position: -150% 0; } }
+  @keyframes dash { to { stroke-dashoffset: -14; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+  @media (max-width: 767px) { .pnav { padding: .6rem .8rem; font-size: .8125rem; } }
+</style>
+</head>
+<body id="top" class="text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+
+<!-- Logo: a shield (compliance) holding a rising line (growth) that ends in an approved node (officer sign-off) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset=".55" stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
+  <linearGradient id="lg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#6ee7b7"/><stop offset="1" stop-color="#ecfeff"/></linearGradient>
+  <symbol id="logo" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="14" fill="url(#lg)"/>
+    <rect x=".75" y=".75" width="46.5" height="46.5" rx="13.25" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.5"/>
+    <path d="M24 8 38 13v10c0 9-6 14.5-14 17.5C16 37.500 10 32 10 23V13z" fill="#0b1437" fill-opacity=".35" stroke="#fff" stroke-opacity=".92" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M16 29.500 22 23.500l4 3L33 18.500" fill="none" stroke="url(#lg2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="33" cy="18.500" r="3.200" fill="#fff"/><circle cx="33" cy="18.500" r="1.300" fill="#10b981"/>
+  </symbol>
+</defs></svg>
+
+<header class="sticky z-40 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80" style="top:env(safe-area-inset-top,0px)">
+  <div class="max-w-7xl mx-auto px-3 sm:px-5 h-16 flex items-center justify-between gap-2">
+    <a href="#top" onclick="goHome(event)" aria-label="Outlyne.ai home" class="flex items-center gap-2.5 shrink-0">
+      <svg class="w-9 h-9 sm:w-10 sm:h-10 drop-shadow-[0_6px_14px_rgba(79,70,229,.55)]" aria-hidden="true"><use href="#logo"/></svg>
+      <span class="leading-none">
+        <span class="font-display text-lg sm:text-xl font-extrabold text-white block">Outlyne<span class="text-indigo-400">.ai</span></span>
+        <span class="hidden 2xl:block text-[11px] text-slate-400 mt-1">Approved outreach for banks</span>
+      </span>
+    </a>
+    <nav id="topnav" aria-label="Page sections" class="hidden xl:flex items-center gap-0.5 min-w-0">
+      <a href="#problem" class="tn">Solution</a><a href="#how-it-works" class="tn">How it works</a><a href="#product" class="tn">Product</a><a href="#agents" class="tn">AI technology</a><a href="#safeguards" class="tn">Security</a><a href="#pricing" class="tn">Pricing</a><a href="#faq" class="tn">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-2 shrink-0">
+      <button onclick="togglePortalAccess()" id="portal-access-btn" aria-label="Staff login" class="btn btn-g text-blue-400 !px-3 !py-2.5 text-xs"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.500 7.500-7.660 8.950a1 1 0 0 1-.670-.010C7.500 20.500 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.500-1.200 6.240-2.720a1.170 1.170 0 0 1 1.520 0C14.510 3.810 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span id="portal-btn-label" class="hidden min-[400px]:inline">Login</span></button>
+      <button onclick="openSignup()" id="public-demo-btn" class="hidden md:inline-flex btn btn-p !py-2.5 text-xs">Get started</button>
+      <button id="menu-btn" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" class="xl:hidden w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 grid place-items-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+  <nav id="mobile-menu" class="is-hidden xl:hidden border-t border-slate-800 bg-slate-950 px-5 py-2 text-sm text-slate-300 flex flex-col divide-y divide-slate-800/70 max-h-[70vh] overflow-y-auto">
+    <a href="#problem" onclick="toggleMenu()" class="py-3">Solution</a>
+    <a href="#how-it-works" onclick="toggleMenu()" class="py-3">How it works</a>
+    <a href="#product" onclick="toggleMenu()" class="py-3">Product</a>
+    <a href="#agents" onclick="toggleMenu()" class="py-3">AI technology</a>
+    <a href="#safeguards" onclick="toggleMenu()" class="py-3">Security and control</a>
+    <a href="#pricing" onclick="toggleMenu()" class="py-3">Pricing</a>
+    <a href="#faq" onclick="toggleMenu()" class="py-3">FAQ</a>
+    <a href="#demo" onclick="toggleMenu()" class="py-3">Book a demo</a>
+    <a href="#" onclick="event.preventDefault();toggleMenu();openSignup()" class="py-3 text-blue-400 font-semibold">Get started</a>
+  </nav>
+</header>
+
+<!-- PUBLIC SITE -->
+<div id="public-section">
+  <section class="relative overflow-hidden pt-12 sm:pt-16 pb-20 sm:pb-28">
+    <div class="orb bg-blue-600 w-72 h-72 sm:w-96 sm:h-96 -top-24 -left-24"></div>
+    <div class="orb bg-violet-600 w-64 h-64 sm:w-80 sm:h-80 top-40 right-0" style="animation-delay:-5s"></div>
+    <div class="orb bg-emerald-500 w-52 h-52 bottom-0 left-1/3 opacity-20" style="animation-delay:-9s"></div>
+    <div class="gridbg absolute inset-0"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-5 grid lg:grid-cols-2 gap-12 lg:gap-14 items-center">
+      <div class="min-w-0">
+        <p class="inline-flex items-center gap-2 bg-blue-950/60 border border-blue-800/60 rounded-full px-4 py-1.5 text-xs text-blue-300 mb-6"><span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>Built for corporate and SME banking teams</p>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.06] mb-6 break-words">AI drafts the outreach. <span class="gt">Your officer approves every message.</span></h1>
+        <p class="text-base sm:text-lg text-slate-400 max-w-xl mb-8 leading-relaxed">Outlyne researches leads, writes tailored proposals and coordinates Email, SMS and WhatsApp follow-ups. Nothing is sent until a bank officer signs off.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button onclick="openSignup()" class="btn btn-p">Create your workspace</button>
+          <a href="#demo" class="btn btn-g">Book a demo</a>
+        </div>
+      </div>
+      <div class="relative min-w-0 pt-6 pb-4 sm:px-4">
+        <div class="float absolute -top-1 left-0 sm:-left-2 z-10 card !rounded-xl px-3 py-2 text-xs flex items-center gap-2 shadow-xl">Lead captured</div>
+        <div class="float absolute -bottom-2 right-0 sm:-right-2 z-10 card !rounded-xl px-3 py-2 text-xs flex items-center gap-2 shadow-xl" style="animation-delay:-3s">Logged for audit</div>
+        <div class="p-px rounded-2xl bg-gradient-to-br from-blue-500/70 via-indigo-500/20 to-emerald-400/60 shadow-2xl shadow-blue-950/60">
+          <div class="bg-slate-900 rounded-2xl p-5 sm:p-6">
+            <div class="flex items-center justify-between gap-2 text-xs text-slate-400 mb-4"><span class="truncate">Draft reply for Sara Ahmed</span><span id="hero-state" class="px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-400 font-semibold whitespace-nowrap">Waiting for officer</span></div>
+            <p class="text-sm text-slate-300 bg-slate-950 border border-slate-800 rounded-xl p-3 mb-3">“Can we schedule a presentation on digital payroll for 500+ employees?”</p>
+            <p class="text-sm text-slate-200 bg-slate-950 border border-slate-800 rounded-xl p-3 mb-5">Hi Sara, our Corporate Solutions team would be glad to arrange a walkthrough. Which slot works for you this Thursday?</p>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3"><span class="text-xs text-slate-500">Try it: the AI cannot send on its own.</span><button id="hero-btn" onclick="heroApprove()" class="btn btn-p !py-2.5 text-xs relative overflow-hidden"><span class="sheen absolute inset-0"></span><span class="relative">Approve and send</span></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem" class="py-16 sm:py-20 bg-slate-900/40 border-y border-slate-900"><div class="max-w-6xl mx-auto px-4 sm:px-5">
+    <div class="max-w-2xl mb-10 rv"><h2 class="font-display text-3xl font-extrabold text-white mb-3">Modernize how your bank wins clients</h2><p class="text-slate-400">Remove manual outreach work while keeping every message under compliance control.</p></div>
+    <div id="prob-grid" class="grid md:grid-cols-3 gap-5 sm:gap-6"></div></div></section>
+
+  <section id="how-it-works" class="py-16 sm:py-24"><div class="max-w-6xl mx-auto px-4 sm:px-5">
+    <div class="max-w-2xl mb-10 rv"><h2 class="font-display text-3xl font-extrabold text-white mb-3">The acquisition process</h2><p class="text-slate-400">Seven steps from first inquiry to executive report.</p></div>
+    <ol id="steps" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"></ol></div></section>
+
+  <section id="product" class="py-16 sm:py-24"><div class="max-w-6xl mx-auto px-4 sm:px-5">
+    <div class="max-w-2xl mb-10 rv"><h2 class="font-display text-3xl font-extrabold text-white mb-3">See the product</h2><p class="text-slate-400">The two screens your team uses every day: the approval queue and the dashboard with its audit log.</p></div>
+    <div class="grid lg:grid-cols-2 gap-5 sm:gap-6">
+      <div class="card rv overflow-hidden min-w-0">
+        <div class="px-4 py-3 border-b border-slate-800 bg-slate-950/60 text-xs text-slate-400">Approval queue</div>
+        <div class="p-4 sm:p-5 space-y-3 text-xs">
+          <div class="flex justify-between gap-2"><b class="text-white text-sm">Tariq Mahmood (SME Exporter)</b><span class="text-amber-400 whitespace-nowrap">Needs review</span></div>
+          <p class="bg-slate-950 border border-slate-800 rounded-lg p-3 text-slate-300">“What are the working capital financing rates for textile exporters?”</p>
+          <p class="bg-slate-950 border border-blue-500/30 rounded-lg p-3 text-slate-200">Dear Tariq, thank you for reaching out. Our SME export facility follows SBP concessionary guidelines. Could we arrange a brief call tomorrow?</p>
+          <div class="flex justify-end gap-2"><span class="btn btn-g !py-1.5 !px-3 text-xs">Reject</span><span class="btn btn-p !py-1.5 !px-3 text-xs">Approve and send</span></div>
+        </div>
+      </div>
+      <div class="card rv overflow-hidden min-w-0" style="transition-delay:90ms">
+        <div class="px-4 py-3 border-b border-slate-800 bg-slate-950/60 text-xs text-slate-400">Dashboard and activity log</div>
+        <div class="p-4 sm:p-5 space-y-4 text-xs">
+          <div class="grid grid-cols-3 gap-2">
+            <div class="bg-slate-950 border border-slate-800 border-t-2 !border-t-blue-500 rounded-lg p-3"><span class="text-slate-400">Leads</span><div class="text-lg font-extrabold text-white">1,248</div></div>
+            <div class="bg-slate-950 border border-slate-800 border-t-2 !border-t-indigo-500 rounded-lg p-3"><span class="text-slate-400">Sent</span><div class="text-lg font-extrabold text-white">980</div></div>
+            <div class="bg-slate-950 border border-slate-800 border-t-2 !border-t-amber-500 rounded-lg p-3"><span class="text-slate-400">Pending</span><div class="text-lg font-extrabold text-amber-400">2</div></div>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-lg divide-y divide-slate-800 font-mono">
+            <div class="flex justify-between gap-2 p-3"><span class="text-blue-400">LEAD-8922</span><span class="text-amber-400 truncate">PENDING_OFFICER_REVIEW</span></div>
+            <div class="flex justify-between gap-2 p-3"><span class="text-blue-400">LEAD-8921</span><span class="text-emerald-400 truncate">DISPATCHED (SAFE_MODE)</span></div>
+            <div class="flex justify-between gap-2 p-3"><span class="text-blue-400">LEAD-8920</span><span class="text-emerald-400 truncate">APPROVED_AND_SENT</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 rv"><button onclick="togglePortalAccess()" class="btn btn-p">Try the demo portal</button><span class="text-xs text-slate-400">Sample data. Demo logins are shown on the staff sign-in page.</span></div>
+  </div></section>
+
+  <section id="agents" class="relative overflow-hidden py-16 sm:py-20 bg-slate-900/40 border-y border-slate-900">
+    <div class="orb bg-indigo-600 w-72 h-72 -right-20 top-10 opacity-20"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-5">
+      <div class="max-w-2xl mb-10 rv"><h2 class="font-display text-3xl font-extrabold text-white mb-3">Two engines, one safe workflow</h2><p class="text-slate-400">Creative proposal writing is kept separate from message delivery controls.</p></div>
+      <div class="grid md:grid-cols-[1fr_auto_1fr] gap-5 sm:gap-6 items-stretch">
+        <div class="card lift rv p-6 sm:p-8">
+          <h3 class="text-xl font-semibold text-white">Banking Intelligence AI</h3><span class="text-xs text-slate-400 block mb-5">Proposal drafting and strategy</span>
+          <ul class="space-y-3 text-sm text-slate-300"><li>Analyzes company profiles and matches banking products.</li><li>Drafts professional, tailored emails and messages.</li><li class="text-amber-400">Drafts only. It cannot send messages directly.</li></ul>
+        </div>
+        <div class="flex md:flex-col items-center justify-center gap-2 text-xs text-slate-400 py-1 rv">
+          <svg class="flow w-24 h-8 md:rotate-90 md:my-8" viewBox="0 0 96 32" fill="none" aria-hidden="true"><defs><linearGradient id="fg" x1="0" x2="1"><stop stop-color="#818cf8"/><stop offset="1" stop-color="#34d399"/></linearGradient></defs><path d="M2 16h92" stroke="url(#fg)" stroke-width="2.500" stroke-linecap="round"/></svg>
+          <span class="px-3 py-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 font-semibold whitespace-nowrap">Officer approves</span>
+          <svg class="flow w-24 h-8 md:rotate-90 md:my-8" viewBox="0 0 96 32" fill="none" aria-hidden="true"><path d="M2 16h92" stroke="url(#fg)" stroke-width="2.500" stroke-linecap="round"/></svg>
+        </div>
+        <div class="card lift rv p-6 sm:p-8">
+          <h3 class="text-xl font-semibold text-white">Automated Delivery Engine</h3><span class="text-xs text-slate-400 block mb-5">Secure transmission and triggers</span>
+          <ul class="space-y-3 text-sm text-slate-300"><li>Runs lead intake, contact checks and data formatting.</li><li>Routes approved messages to Email, SMS or WhatsApp.</li><li>Logs every interaction into central reporting sheets.</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="safeguards" class="py-16 sm:py-24"><div class="max-w-6xl mx-auto px-4 sm:px-5">
+    <div class="max-w-2xl mb-10 rv"><h2 class="font-display text-3xl font-extrabold text-white mb-3">Security and institutional governance</h2><p class="text-slate-400">Designed around the controls financial institutions expect.</p></div>
+    <div id="gov-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"></div></div></section>
+
+  <section id="pricing" class="py-16 sm:py-24 bg-slate-900/40 border-y border-slate-900"><div class="max-w-6xl mx-auto px-4 sm:px-5">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-10 rv">
+      <div class="max-w-2xl"><h2 class="font-display text-3xl font-extrabold text-white mb-3">Pricing that follows your usage</h2><p class="text-slate-400">A platform fee, a per-lead rate above your allowance, and messaging passed through at cost. Sample prices in USD; final terms are agreed with each bank.</p></div>
+      <div id="cyc-land" class="flex gap-2 shrink-0"></div>
+    </div>
+    <div id="plan-grid" class="grid md:grid-cols-3 gap-5"></div>
+    <div id="charge-grid" class="grid md:grid-cols-3 gap-4 mt-6"></div>
+    <div class="card p-5 sm:p-7 mt-6 grid md:grid-cols-2 gap-6 items-center">
+      <div><h3 class="text-lg font-semibold text-white mb-1">Estimate your month</h3><p class="text-sm text-slate-400 mb-4">Based on the Growth plan. Move the slider to your expected lead volume.</p>
+        <label for="est-leads" class="lbl">Leads per month: <b id="est-n" class="text-white">1,000</b></label><input type="range" id="est-leads" min="100" max="5000" step="100" value="1000" oninput="est()"></div>
+      <div id="est-out" class="text-sm space-y-1.5 bg-slate-950 border border-slate-800 rounded-xl p-4"></div>
+    </div>
+  </div></section>
+
+  <section id="faq" class="py-16 sm:py-20"><div class="max-w-3xl mx-auto px-4 sm:px-5">
+    <div class="mb-8 rv"><h2 class="font-display text-3xl font-extrabold text-white mb-3">Questions banks ask us</h2></div>
+    <div id="faq-list" class="faq space-y-3"></div></div></section>
+
+  <section id="demo" class="relative overflow-hidden py-16 sm:py-24 bg-slate-900/40 border-t border-slate-900">
+    <div class="orb bg-blue-600 w-80 h-80 left-1/2 -translate-x-1/2 -bottom-40 opacity-25"></div>
+    <div class="relative max-w-2xl mx-auto px-4 sm:px-5">
+      <div class="p-px rounded-3xl bg-gradient-to-br from-blue-500/50 via-slate-800 to-indigo-500/40"><div class="bg-slate-900 p-5 sm:p-10 rounded-3xl">
+        <div class="mb-8"><h2 class="font-display text-3xl font-extrabold text-white mb-2">Book a guided demo</h2><p class="text-slate-400 text-sm">Prefer to talk first? Tell us about you and your bank. Ready to set up? <button type="button" onclick="openSignup()" class="underline text-blue-400">Create a workspace</button> instead.</p></div>
+        <form id="n8nDemoForm" onsubmit="submitPublicDemo(event)" class="space-y-5">
+          <div id="demo-fields"></div>
+          <div><label for="d_notes" class="lbl">What do you want to achieve? <span class="text-slate-500">(optional)</span></label><textarea id="d_notes" name="notes" rows="3" placeholder="Briefly describe your outbound or client acquisition needs" class="inp"></textarea></div>
+          <div class="flex items-start gap-3 text-xs text-slate-400"><input type="checkbox" id="consent" name="consent" required class="mt-0.5"><label for="consent">I agree to the processing of my information as described in the <button type="button" onclick="openDlg('privacy')" class="underline text-blue-400">Privacy Notice</button>.</label></div>
+          <button type="submit" id="publicSubmitBtn" class="btn btn-p w-full">Request demo</button>
+          <p id="publicStatusMsg" role="status" class="text-sm text-center mt-2 is-hidden"></p>
+        </form>
+      </div></div>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-slate-900 text-slate-500 text-xs text-center px-4">
+    <p class="mb-3"><a href="mailto:hello@outlyne.ai" class="text-slate-300 hover:text-white">hello@outlyne.ai</a><span class="mx-3">|</span><button onclick="openDlg('privacy')" class="hover:text-white">Privacy Notice</button><span class="mx-3">|</span><button onclick="openDlg('terms')" class="hover:text-white">Terms of Use</button></p>
+    <p>Outlyne.ai © 2026. Institutional Financial Growth Technologies. All rights reserved.</p>
+    <a href="#top" onclick="goHome(event)" class="inline-block mt-3 text-slate-400 hover:text-white">Back to top</a>
+  </footer>
+</div>
+
+<dialog id="dlg-privacy" class="m-auto w-[calc(100%-2rem)] max-w-lg max-h-[85vh] overflow-y-auto bg-slate-900 text-slate-300 border border-slate-700 rounded-2xl p-6 text-sm leading-relaxed">
+  <h2 class="font-display text-xl font-extrabold text-white mb-3">Privacy Notice</h2>
+  <p class="mb-3">When you request a demo or create a workspace we collect your name, job title, organization, website, email, phone, LinkedIn profile, location and the preferences you enter. We use them only to reply, set up your account and arrange the demo.</p>
+  <p class="mb-3">We do not sell your information. You can ask us to see, correct or delete it at any time by writing to hello@outlyne.ai.</p>
+  <p class="mb-5 text-xs text-slate-400">Draft text. Have your legal adviser review it before launch.</p>
+  <form method="dialog"><button class="btn btn-p w-full">Close</button></form>
+</dialog>
+<dialog id="dlg-terms" class="m-auto w-[calc(100%-2rem)] max-w-lg max-h-[85vh] overflow-y-auto bg-slate-900 text-slate-300 border border-slate-700 rounded-2xl p-6 text-sm leading-relaxed">
+  <h2 class="font-display text-xl font-extrabold text-white mb-3">Terms of Use</h2>
+  <p class="mb-3">This website describes Outlyne AI and lets you request a demo or create a workspace. The demo portal uses sample data and demonstration logins only. Do not enter real client information into it.</p>
+  <p class="mb-3">Product features, pilots and pricing are agreed in a written agreement with each bank.</p>
+  <p class="mb-5 text-xs text-slate-400">Draft text. Have your legal adviser review it before launch.</p>
+  <form method="dialog"><button class="btn btn-p w-full">Close</button></form>
+</dialog>
+
+<!-- SIGNUP / ONBOARDING -->
+<div id="signup-section" class="is-hidden min-h-[calc(100vh-4rem)] px-4 sm:px-5 py-8 sm:py-12 relative overflow-hidden">
+  <div class="orb bg-indigo-600 w-72 h-72 -top-16 right-0 opacity-25"></div>
+  <div class="relative max-w-3xl mx-auto">
+    <h1 class="font-display text-3xl font-extrabold text-white">Create your workspace</h1>
+    <p class="text-slate-400 mt-2 mb-6 text-sm sm:text-base">Four short steps. We use your answers to set up your account and your first outreach run.</p>
+    <div id="wiz-main">
+      <ol id="wiz-steps" class="flex items-center gap-2 sm:gap-3 mb-6 text-xs text-slate-400 overflow-x-auto"></ol>
+      <form id="wizForm" onsubmit="event.preventDefault();wizNext()" novalidate class="card p-5 sm:p-8">
+        <div id="wiz-body"></div>
+        <p id="wiz-err" role="alert" class="is-hidden text-sm text-rose-400 mt-4"></p>
+        <div class="flex flex-col-reverse sm:flex-row sm:justify-between gap-3 mt-6">
+          <button type="button" id="wiz-back" onclick="wizBack()" class="btn btn-g">Back</button>
+          <button type="submit" id="wiz-next" class="btn btn-p">Continue</button>
+        </div>
+      </form>
+    </div>
+    <div id="wiz-done" class="is-hidden card p-6 sm:p-8"></div>
+  </div>
+</div>
+
+<!-- OFFICER PORTAL -->
+<div id="portal-section" class="is-hidden min-h-[calc(100vh-4rem)] flex flex-col md:flex-row">
+  <aside class="md:w-64 bg-slate-900 border-b md:border-b-0 md:border-r border-slate-800 shrink-0 flex md:flex-col justify-between sticky md:static z-30 min-w-0" style="top:calc(4rem + env(safe-area-inset-top,0px))">
+    <div class="p-2 md:p-4 flex md:flex-col gap-1 overflow-x-auto w-full">
+      <span id="role-badge" class="hidden md:block text-xs text-slate-400 px-3 mb-1">Internal controls</span>
+      <button onclick="switchPortalTab('dashboard')" id="pnav-dashboard" class="portal-nav-btn pnav">Dashboard</button>
+      <button onclick="switchPortalTab('client-onboarding')" id="pnav-client-onboarding" class="portal-nav-btn pnav">Add lead</button>
+      <button onclick="switchPortalTab('bank-setup')" id="pnav-bank-setup" class="portal-nav-btn pnav">System settings</button>
+      <button onclick="switchPortalTab('approval')" id="pnav-approval" class="portal-nav-btn pnav">Approval queue<span id="portal-badge-count" class="md:ml-auto bg-amber-500 text-slate-950 font-bold text-[10px] px-2 py-0.5 rounded-full">2</span></button>
+      <button onclick="switchPortalTab('logs')" id="pnav-logs" class="portal-nav-btn pnav">Activity logs</button>
+    </div>
+    <div class="hidden md:block p-4 border-t border-slate-800"><div class="flex items-center gap-3 px-3 py-2 bg-slate-950 rounded-xl border border-slate-800"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span><span class="text-xs font-mono text-slate-300">Safety mode: <strong class="text-emerald-400">on</strong></span></div></div>
+  </aside>
+
+  <main class="flex-1 min-w-0 p-4 sm:p-6 md:p-10 relative">
+    <div id="portal-global-alert" role="status" class="is-hidden mb-6 p-4 rounded-xl text-sm font-mono border break-words"></div>
+
+    <div id="ptab-dashboard" class="portal-tab active space-y-6 sm:space-y-8">
+      <div><h1 class="font-display text-2xl font-extrabold text-white">Campaign dashboard</h1><p class="text-sm text-slate-400 mt-1">Sample data for demonstration. Connect your database to show live numbers.</p></div>
+      <div id="role-info" class="card p-4 sm:p-5 text-sm text-slate-300"></div>
+      <div class="grid grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
+        <div class="card p-4 sm:p-5 border-t-2 !border-t-blue-500"><span class="text-xs text-slate-400">Total intake leads</span><div class="text-2xl sm:text-3xl font-extrabold text-white mt-2">1,248</div><span class="text-xs text-emerald-400">Cleansed and validated</span></div>
+        <div class="card p-4 sm:p-5 border-t-2 !border-t-indigo-500"><span class="text-xs text-slate-400">Outbound dispatched</span><div id="dash-sent" class="text-2xl sm:text-3xl font-extrabold text-white mt-2">980</div><span class="text-xs text-slate-400">Email, SMS, WhatsApp</span></div>
+        <div class="card p-4 sm:p-5 border-t-2 !border-t-amber-500"><span class="text-xs text-slate-400">Pending approval</span><div id="dash-pending-val" class="text-2xl sm:text-3xl font-extrabold text-amber-400 mt-2">2</div><span class="text-xs text-amber-400/80">Needs human review</span></div>
+        <div class="card p-4 sm:p-5 border-t-2 !border-t-emerald-500"><span class="text-xs text-slate-400">System status</span><div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-2">Active</div><span class="text-xs text-slate-400">All pipelines running</span></div>
+      </div>
+      <div id="plan-card" class="card p-4 sm:p-5 text-sm"></div>
+    </div>
+
+    <div id="ptab-client-onboarding" class="portal-tab space-y-6">
+      <div><h1 class="font-display text-2xl font-extrabold text-white">Add a lead</h1><p class="text-sm text-slate-400 mt-1">Every field below is sent to the Outlyne workflow so it can enrich the lead and draft the outreach.</p></div>
+      <form id="portalClientForm" onsubmit="submitClientOnboarding(event)" class="card p-5 sm:p-8 space-y-5 max-w-3xl">
+        <div id="lead-fields"></div>
+        <div class="flex items-start gap-3 text-xs text-slate-400"><input type="checkbox" id="l_consent" name="consent" required class="mt-0.5"><label for="l_consent">This contact has opted in, or we have a lawful basis to contact them.</label></div>
+        <button type="submit" id="clientOnboardBtn" class="btn btn-p w-full">Submit lead</button>
+      </form>
+    </div>
+
+    <div id="ptab-bank-setup" class="portal-tab space-y-6 sm:space-y-8">
+      <div><h1 class="font-display text-2xl font-extrabold text-white">System settings</h1><p class="text-sm text-slate-400 mt-1">Set your institution profile and connect your CRM.</p></div>
+      <div class="card p-5 sm:p-8 space-y-5 max-w-2xl">
+        <h2 class="text-lg font-bold text-white">Profile</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div><label for="setup-org" class="lbl">Bank name</label><input type="text" id="setup-org" value="Commercial Bank Ltd." class="inp"></div>
+          <div><label for="setup-mail" class="lbl">Compliance email</label><input type="email" id="setup-mail" value="compliance@commercialbank.com" class="inp"></div>
+        </div>
+        <button onclick="saveBankSetup()" class="btn btn-p w-full">Save profile</button>
+      </div>
+      <div class="card p-5 sm:p-8 space-y-5 max-w-2xl">
+        <div><h2 class="text-lg font-bold text-white">Connect your CRM</h2><p class="text-sm text-slate-400 mt-1">Sync lead data from your current CRM into Outlyne AI.</p></div>
+        <div><label for="crm_provider" class="lbl">CRM platform</label><select id="crm_provider" class="inp"><option value="hubspot">HubSpot CRM</option><option value="salesforce">Salesforce Cloud</option><option value="custom">Generic direct integration</option></select></div>
+        <div><label for="crm_api_key" class="lbl">CRM access key</label><input type="password" id="crm_api_key" autocomplete="off" placeholder="Paste your connection token" class="inp font-mono"><span class="text-xs text-slate-500 mt-1 block">Find this in your CRM’s developer or admin settings.</span></div>
+        <div><label for="crm_webhook_url" class="lbl">Integration endpoint</label><div class="flex gap-2"><input type="text" id="crm_webhook_url" readonly value="https://api.outlyne.ai/v1/crm-sync" class="inp !text-xs !text-blue-400 font-mono min-w-0"><button type="button" onclick="copyEndpoint()" class="btn btn-g !px-4 !py-2 text-xs">Copy</button></div></div>
+        <button type="button" onclick="testCrmConnection()" id="crmTestBtn" class="btn btn-ok w-full">Test and activate connector</button>
+      </div>
+    </div>
+
+    <div id="ptab-approval" class="portal-tab space-y-6">
+      <div><h1 class="font-display text-2xl font-extrabold text-white">Approval queue</h1><p class="text-sm text-slate-400 mt-1">Review and edit AI drafts. Nothing is sent without your approval.</p></div>
+      <div id="portal-queue-container" class="space-y-6"></div>
+      <div id="portal-queue-empty" class="is-hidden card p-10 sm:p-12 text-center"><p class="text-emerald-400 font-semibold">All inquiries cleared</p></div>
+    </div>
+
+    <div id="ptab-logs" class="portal-tab space-y-6">
+      <div><h1 class="font-display text-2xl font-extrabold text-white">Activity logs</h1><p class="text-sm text-slate-400 mt-1">Audit trail of leads, officer decisions and dispatches. Newest first. Swipe sideways on small screens.</p></div>
+      <div class="card overflow-x-auto text-xs"><table class="w-full text-left min-w-[640px]">
+        <thead class="bg-slate-950/80 text-slate-400"><tr><th class="p-4 font-medium">Timestamp</th><th class="p-4 font-medium">Lead ID</th><th class="p-4 font-medium">Channel</th><th class="p-4 font-medium">Status</th><th class="p-4 font-medium">Actor</th></tr></thead>
+        <tbody id="log-body" class="divide-y divide-slate-800 font-mono"></tbody></table></div>
+    </div>
+  </main>
+</div>
+
+<!-- STAFF LOGIN -->
+<div id="login-section" class="is-hidden min-h-[calc(100vh-4rem)] px-4 sm:px-5 py-10 sm:py-12 relative overflow-hidden">
+  <div class="orb bg-indigo-600 w-72 h-72 -top-16 right-0 opacity-25"></div>
+  <div class="relative max-w-5xl mx-auto">
+    <h1 class="font-display text-3xl font-extrabold text-white">Staff sign-in</h1>
+    <p class="text-slate-400 mt-2">Choose your role. Each role sees a different part of the platform.</p>
+    <div id="role-cards" class="grid md:grid-cols-3 gap-4 sm:gap-5 mt-8"></div>
+    <form id="login-panel" onsubmit="submitLogin(event)" class="is-hidden mt-8 max-w-md card p-6 sm:p-7 space-y-4">
+      <h2 id="login-title" class="font-display text-xl font-extrabold text-white"></h2>
+      <div><label for="login-user" class="lbl">Username</label><input type="text" id="login-user" required autocomplete="username" class="inp"></div>
+      <div><label for="login-pin" class="lbl">PIN</label><input type="password" id="login-pin" required inputmode="numeric" autocomplete="current-password" class="inp tracking-widest"></div>
+      <p id="login-error" role="alert" class="is-hidden text-sm text-rose-400">Wrong username or PIN for this role. Try again.</p>
+      <button type="submit" class="btn btn-p w-full">Sign in</button>
+      <p id="login-hint" class="text-xs text-slate-500"></p>
+    </form>
+  </div>
+</div>
+
+<script>
+const CONFIG = {
+  LEAD_ENDPOINT: 'http://localhost:5678/webhook-test/external-lead-intake', // before launch: replace with your public n8n production webhook URL
+  SHOW_DEMO_HINT: true, // set to false before launch to hide the demo usernames and PINs
+  DEMO_FALLBACK: true, // true: if n8n is unreachable, show a clearly labelled demo message instead of an error
+  USERS: { officer: { user: 'officer', pin: '1234' }, compliance: { user: 'compliance', pin: '2345' }, admin: { user: 'itadmin', pin: '3456' } } // demo only: front-end logins are not real security
+};
+const ROLES = {
+  officer: { label: 'Bank Officer', c: 'blue', approve: true, tabs: ['dashboard', 'client-onboarding', 'approval', 'logs'],
+    summary: 'Reviews and approves every AI draft before it is sent.',
+    does: ['Add new leads', 'Edit, approve or reject AI drafts', 'View activity logs'], cannot: ['Change system settings', 'Connect the CRM'] },
+  compliance: { label: 'Compliance', c: 'emerald', approve: false, tabs: ['dashboard', 'approval', 'logs'],
+    summary: 'Independent oversight of what the AI and officers do.',
+    does: ['See every draft in the queue (read-only)', 'Review the full audit log'], cannot: ['Approve, reject or edit drafts', 'Change settings or add leads'] },
+  admin: { label: 'IT Admin', c: 'amber', approve: false, tabs: ['dashboard', 'bank-setup', 'logs'],
+    summary: 'Keeps the platform running and connected.',
+    does: ['Connect and test the CRM', 'Manage bank profile and settings', 'View logs for troubleshooting'], cannot: ['See or approve client drafts', 'Add leads'] }
+};
+const PLANS = [
+  { id: 'pilot', name: 'Pilot', price: 0, lead: '30 days, up to 100 leads', feats: ['Simulation mode only', '1 officer seat', 'Email channel', 'Audit log export'] },
+  { id: 'growth', name: 'Growth', price: 499, pop: 1, lead: '1,000 leads per month included', feats: ['Supervised live sending', '5 officer seats', 'Email, SMS and WhatsApp', 'HubSpot and Salesforce sync', 'Read-only compliance role'] },
+  { id: 'enterprise', name: 'Enterprise', price: null, lead: 'Custom volume', feats: ['Unlimited seats', 'Hosting in your environment', 'SSO and custom roles', 'Security review and SLA'] }
+];
+const PH = '\\+?[0-9 \\-]{7,20}', LI = 'https?://(www\\.)?linkedin\\.com/.+', DOM = '(https?://)?(www\\.)?[a-zA-Z0-9\\-]+(\\.[a-zA-Z0-9\\-]+)+.*';
+const ARR = ['products', 'channels'];
+let selectedRole = null, currentRole = null, isPortalUnlocked = false, view = 'public', plan = 'growth', cycle = 'monthly', step = 0, workspace = null;
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- Form builders ---------- */
+const F = p => (n, l, o = {}) => {
+  const { t = 'text', ph = '', req = 1, pat = '', opts, hint = '', cls = '' } = o, id = p + n, a = `id="${id}" name="${n}" class="inp"${req ? ' required' : ''}`;
+  return `<div class="${cls}"><label for="${id}" class="lbl">${l}${req ? '' : ' <span class="text-slate-500">(optional)</span>'}</label>${opts ? `<select ${a}>${opts.map(x => `<option>${x}</option>`).join('')}</select>` : `<input type="${t}" ${a} placeholder="${ph}"${pat ? ` pattern="${pat}" title="${hint}"` : ''} autocomplete="off">`}${hint && !pat ? `<span class="text-xs text-slate-500 mt-1 block">${hint}</span>` : ''}</div>`;
+};
+const chk = (n, l, items) => `<fieldset><legend class="lbl">${l}</legend><div class="flex flex-wrap gap-2">${items.map(x => `<label class="chip"><input type="checkbox" name="${n}" value="${x}" class="accent-blue-500">${x}</label>`).join('')}</div></fieldset>`;
+// These names match what the n8n workflow collects: name, title, company, domain, email, phone, linkedin, location
+const contact = p => { const f = F(p); return `<div class="grid sm:grid-cols-2 gap-4">${f('full_name', 'Full name', { ph: 'Tariq Mahmood' })}${f('job_title', 'Job title', { ph: 'Head of SME Banking' })}${f('company_name', 'Bank or organization', { ph: 'Commercial Bank Ltd.' })}${f('domain', 'Company website', { ph: 'commercialbank.com', pat: DOM, hint: 'Example: commercialbank.com' })}${f('email', 'Work email', { t: 'email', ph: 'name@bank.com' })}${f('phone', 'Phone or WhatsApp', { t: 'tel', ph: '+92 300 1234567', pat: PH, hint: 'Include the country code, for example +92 300 1234567' })}${f('linkedin_url', 'LinkedIn profile', { t: 'url', ph: 'https://linkedin.com/in/name', req: 0, pat: LI, hint: 'Paste the full LinkedIn address' })}<div class="grid grid-cols-2 gap-3">${f('city', 'City', { ph: 'Islamabad' })}${f('country', 'Country', { ph: 'Pakistan' })}</div></div>`; };
+const cleanDomain = v => String(v).trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[\/?#]/)[0];
+function collect(form) {
+  const fd = new FormData(form), o = {};
+  for (const k of new Set(fd.keys())) { const v = fd.getAll(k); o[k] = ARR.includes(k) ? v : v[0]; }
+  if (o.domain) o.domain = cleanDomain(o.domain);
+  if (o.city || o.country) o.location = [o.city, o.country].filter(Boolean).join(', ');
+  if ('consent' in o) o.consent = true;
+  return o;
+}
+
+/* ---------- Landing content ---------- */
+$('demo-fields').innerHTML = contact('d_');
+$('lead-fields').innerHTML = contact('l_') + (f => `<div class="grid sm:grid-cols-2 gap-4 mt-4">${f('industry', 'Industry', { opts: ['Textiles and apparel', 'Manufacturing', 'Agriculture', 'Technology', 'Retail and trade', 'Energy', 'Other'] })}${f('company_size', 'Company size', { opts: ['1-50 employees', '51-250 employees', '251-1,000 employees', '1,000+ employees'] })}${f('selected_product', 'Product interest', { opts: ['SME Working Capital Financing (SBP Scheme)', 'Corporate Digital Payroll Solutions', 'Trade Export Refinance Facility'] })}${f('preferred_channel', 'Preferred channel', { opts: ['Email', 'SMS', 'WhatsApp'] })}${f('lead_source', 'Lead source', { opts: ['Website form', 'Referral', 'Event', 'LinkedIn', 'Existing customer', 'Other'] })}${f('language', 'Language', { opts: ['English', 'Urdu', 'Arabic', 'Other'] })}</div>`)(F('l_'));
+$('prob-grid').innerHTML = [
+  ['Instant client profiling', 'Evaluate business needs and match them to the right financial products without manual research.'],
+  ['One place for outreach', 'Coordinate Email, SMS and WhatsApp with full history and timely follow-ups.'],
+  ['Compliance-first by design', 'AI writes drafts only. A human bank officer must approve each message before it goes out.']
+].map(([t, d]) => `<div class="card lift rv p-6 sm:p-7"><h3 class="text-lg font-semibold text-white mb-2">${t}</h3><p class="text-slate-400 text-sm leading-relaxed">${d}</p></div>`).join('');
+$('steps').innerHTML = [
+  ['Lead intake', 'Receives inquiries from web portals, forms and business channels.'],
+  ['Data hygiene', 'Validates contacts, removes duplicates and checks business reputation.'],
+  ['Product match', 'Identifies client needs and prepares tailored product recommendations.'],
+  ['Officer sign-off', 'Every draft is reviewed and approved by a bank officer first.'],
+  ['Smart delivery', 'Sends approved messages by Email, SMS or WhatsApp.'],
+  ['Activity records', 'Every action is stored in secure audit logs.'],
+  ['Executive reporting', 'Real-time conversion metrics and campaign performance for management.']
+].map(([t, d], n) => `<li class="card lift rv p-5 sm:p-6 ${n === 6 ? 'sm:col-span-2' : ''}"><span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-500 grid place-items-center text-xs font-bold text-white">${n + 1}</span><h3 class="text-lg font-semibold text-white mt-3 mb-1">${t}</h3><p class="text-slate-400 text-sm">${d}</p></li>`).join('');
+$('gov-grid').innerHTML = [
+  ['Mandatory officer sign-off', 'An authorized officer approves every message before it is sent. The AI has no permission to send.'],
+  ['Safe simulation mode', 'Test campaign logic and message quality in a sandbox with no live communications.'],
+  ['Centralized audit logs', 'Lead interactions, approvals, rejections and dispatch times are recorded for compliance.'],
+  ['Separate roles', 'Officers, compliance and IT admins each see only what their job needs.'],
+  ['Deployment agreed with you', 'Hosting, data location and access rules are set with your IT and compliance teams.'],
+  ['Security review pack', 'Ask for our architecture, data-flow and access-control documents before a pilot starts. <a href="mailto:hello@outlyne.ai?subject=Security%20review%20pack" class="underline text-blue-400">Request the pack</a>']
+].map(([t, d]) => `<div class="card lift rv p-6"><h3 class="text-lg font-semibold text-white mb-2">${t}</h3><p class="text-slate-400 text-sm">${d}</p></div>`).join('');
+$('charge-grid').innerHTML = [
+  ['Platform subscription', 'A flat monthly fee covers seats, the approval workflow, audit logs and support. Annual billing saves 20%.'],
+  ['Per-lead usage', 'Each plan includes a lead allowance. Leads above it are billed per enriched lead, so cost follows volume.'],
+  ['Messaging at cost', 'Email, SMS and WhatsApp delivery is passed through at the provider’s rate with no markup.']
+].map(([t, d]) => `<div class="card p-5"><h3 class="font-semibold text-white mb-1.5">${t}</h3><p class="text-slate-400 text-sm">${d}</p></div>`).join('');
+$('faq-list').innerHTML = [
+  ['Can the AI send a message on its own?', 'No. The AI only writes drafts. A message is released only after an authorized bank officer approves it, and the approval is recorded in the audit log.'],
+  ['What can each team member see?', 'Officers review and approve drafts. Compliance can see every draft and the full log but cannot change anything. IT admins manage settings and the CRM connection but cannot see client drafts.'],
+  ['How does billing work?', 'You pay a platform fee, plus a per-lead rate above your included allowance, plus messaging at cost. The Pilot is free for 30 days in simulation mode.'],
+  ['Where is our data stored?', 'This is agreed with your IT and compliance teams during the pilot. We can discuss options, including running inside your own environment.'],
+  ['Can we try it without contacting real clients?', 'Yes. Simulation mode runs the full workflow with no live Email, SMS or WhatsApp messages sent.'],
+  ['How do we start?', 'Create a workspace in four steps, or book a guided demo. Scope and timing are agreed with your bank.']
+].map(([q, a]) => `<details class="card rv group"><summary class="flex items-center justify-between gap-4 p-4 sm:p-5 font-semibold text-white text-sm sm:text-base">${q}<span class="chev text-slate-400">&#9662;</span></summary><p class="px-4 sm:px-5 pb-4 sm:pb-5 -mt-1 text-sm text-slate-400 leading-relaxed">${a}</p></details>`).join('');
+function openDlg(k) { const d = $('dlg-' + k); if (d && d.showModal) d.showModal(); }
+document.querySelectorAll('dialog').forEach(d => d.addEventListener('click', e => { if (e.target === d) d.close(); }));
+
+/* ---------- Pricing ---------- */
+const money = p => p.price === null ? 'Custom' : p.price === 0 ? 'Free' : '$' + Math.round(p.price * (cycle === 'annual' ? .8 : 1));
+const planBody = p => `<div class="flex items-center justify-between"><h3 class="text-lg font-semibold text-white">${p.name}</h3>${p.pop ? '<span class="text-[11px] px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300">Most chosen</span>' : ''}</div><div class="font-display text-3xl font-extrabold text-white mt-2">${money(p)}<span class="text-sm text-slate-400 font-normal">${p.price ? '/mo' + (cycle === 'annual' ? ', billed yearly' : '') : ''}</span></div><p class="text-sm text-slate-400 mt-1 mb-4">${p.lead}</p><ul class="space-y-2 text-sm text-slate-300">${p.feats.map(x => `<li>&#10003; ${x}</li>`).join('')}</ul>`;
+function renderPlans() {
+  $('plan-grid').innerHTML = PLANS.map(p => `<div class="card lift p-6 flex flex-col ${p.pop ? 'ring-1 ring-indigo-500/60' : ''}"><div class="flex-1">${planBody(p)}</div><button class="btn ${p.pop ? 'btn-p' : 'btn-g'} w-full mt-6" onclick="openSignup('${p.id}')">${p.price === null ? 'Talk to us' : 'Choose ' + p.name}</button></div>`).join('');
+  const w = $('wiz-plans'); if (w) w.innerHTML = PLANS.map(p => `<button type="button" onclick="pickPlan('${p.id}')" aria-pressed="${plan === p.id}" class="card plan text-left p-5 ${plan === p.id ? 'sel' : ''}">${planBody(p)}</button>`).join('');
+  const cy = ['monthly', 'annual'].map(c => `<button type="button" onclick="setCycle('${c}')" aria-pressed="${cycle === c}" class="btn ${cycle === c ? 'btn-p' : 'btn-g'} !py-2 !px-4 text-xs">${c === 'monthly' ? 'Monthly' : 'Yearly (save 20%)'}</button>`).join('');
+  $('cyc-land').innerHTML = cy; const cw = $('cyc-wiz'); if (cw) cw.innerHTML = cy;
+  est();
+}
+const setCycle = c => { cycle = c; renderPlans(); };
+const pickPlan = id => { plan = id; renderPlans(); };
+function est() {
+  const n = +$('est-leads').value, base = Math.round(499 * (cycle === 'annual' ? .8 : 1)), extra = Math.max(0, n - 1000) * .35, msg = n * 2 * .03, tot = base + extra + msg;
+  $('est-n').textContent = n.toLocaleString();
+  $('est-out').innerHTML = [['Growth platform fee', base], ['Extra leads over 1,000 ($0.35 each)', extra], ['Messaging at cost (about 2 per lead)', msg]].map(([a, b]) => `<div class="flex justify-between gap-3"><span class="text-slate-400">${a}</span><span>$${b.toFixed(0)}</span></div>`).join('') + `<div class="flex justify-between border-t border-slate-700 pt-2 mt-2 font-bold text-white"><span>Estimated per month</span><span>$${tot.toFixed(0)}</span></div>`;
+}
+
+/* ---------- Signup wizard ---------- */
+const STEPS = ['Contact', 'Goals', 'Plan', 'Launch'];
+function panels() {
+  const f = F('s_');
+  return [
+    contact('s_') + `<div class="grid sm:grid-cols-2 gap-4 mt-4">${f('institution_type', 'Institution type', { opts: ['Commercial bank', 'Islamic bank', 'Microfinance bank', 'Development finance', 'Other'] })}${f('employees', 'Team size', { opts: ['1-50', '51-250', '251-1,000', '1,000+'] })}</div>`,
+    `<div class="space-y-5">${chk('products', 'Which products will you promote?', ['SME financing', 'Corporate payroll', 'Trade and export finance', 'Retail and consumer', 'Treasury and FX'])}${chk('channels', 'Which channels should we use?', ['Email', 'SMS', 'WhatsApp'])}<div class="grid sm:grid-cols-2 gap-4">${f('target_titles', 'Titles you want to reach', { ph: 'CFO, Finance Director, Owner', req: 0 })}${f('target_industries', 'Industries to target', { ph: 'Textiles, Manufacturing', req: 0 })}${f('target_locations', 'Locations to target', { ph: 'Karachi, Lahore, Islamabad', req: 0 })}${f('monthly_lead_volume', 'Expected leads per month', { opts: ['Under 100', '100-1,000', '1,000-5,000', '5,000+'] })}${f('language', 'Outreach language', { opts: ['English', 'Urdu', 'Arabic', 'Other'] })}</div></div>`,
+    `<div class="space-y-5"><div class="flex items-center justify-between gap-3 flex-wrap"><p class="text-sm text-slate-300">Pick a plan. You can change it later.</p><div id="cyc-wiz" class="flex gap-2"></div></div><div id="wiz-plans" class="grid md:grid-cols-3 gap-4"></div><div class="grid sm:grid-cols-2 gap-4">${f('payment_method', 'Payment method', { opts: ['Invoice', 'Bank transfer', 'Card'] })}${f('billing_email', 'Billing email', { t: 'email', ph: 'accounts@bank.com' })}</div></div>`,
+    `<div class="space-y-5"><div class="grid sm:grid-cols-2 gap-4">${f('compliance_email', 'Compliance contact email', { t: 'email', ph: 'compliance@bank.com' })}${f('approver_emails', 'Officers who will approve messages', { ph: 'ali@bank.com, sana@bank.com', hint: 'Separate emails with commas' })}${f('sending_domain', 'Sending domain', { ph: 'mail.bank.com', req: 0, hint: 'Optional now. Needed before live sending.' })}${f('daily_send_cap', 'Daily send limit', { opts: ['50', '100', '250', '500'] })}${f('start_mode', 'Start in', { opts: ['Simulation (recommended)', 'Supervised live'], cls: 'sm:col-span-2' })}</div><div class="flex items-start gap-3 text-xs text-slate-400"><input type="checkbox" id="s_consent" name="consent" required class="mt-0.5"><label for="s_consent">I agree to the <button type="button" onclick="openDlg('terms')" class="underline text-blue-400">Terms of Use</button> and the <button type="button" onclick="openDlg('privacy')" class="underline text-blue-400">Privacy Notice</button>, and I confirm every outbound message will be approved by a bank officer.</label></div></div>`
+  ];
+}
+function renderWizard() {
+  $('wiz-body').innerHTML = panels().map((h, i) => `<div class="wiz-panel ${i === step ? '' : 'is-hidden'}" data-i="${i}"><h2 class="font-display text-xl font-extrabold text-white mb-5">${['About you and your bank', 'Your outreach goals', 'Choose a plan', 'Governance and launch'][i]}</h2>${h}</div>`).join('');
+  $('wiz-steps').innerHTML = STEPS.map((s, i) => `<li class="flex items-center gap-2 shrink-0"><span class="sdot ${i < step ? 'done' : i === step ? 'on' : ''}">${i < step ? '&#10003;' : i + 1}</span><span class="${i === step ? 'text-white font-semibold' : ''}">${s}</span>${i < 3 ? '<span class="w-4 sm:w-8 h-px bg-slate-700"></span>' : ''}</li>`).join('');
+  $('wiz-back').classList.toggle('is-hidden', step === 0);
+  $('wiz-next').textContent = step === 3 ? 'Create workspace' : 'Continue';
+  $('wiz-err').classList.add('is-hidden');
+  renderPlans();
+}
+function wizNext() {
+  const panel = document.querySelector('.wiz-panel[data-i="' + step + '"]'), err = $('wiz-err');
+  for (const el of panel.querySelectorAll('input,select,textarea')) if (!el.checkValidity()) { el.reportValidity(); return; }
+  if (step === 1 && (!panel.querySelector('[name=products]:checked') || !panel.querySelector('[name=channels]:checked'))) { err.textContent = 'Choose at least one product and one channel.'; err.classList.remove('is-hidden'); return; }
+  if (step < 3) { step++; renderWizardKeep(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+  submitSignup();
+}
+function renderWizardKeep() { // re-render panels but keep what was typed
+  const saved = [...document.querySelectorAll('#wiz-body [name]')].map(e => [e.name, e.type === 'checkbox' ? e.checked : e.value, e.value]);
+  renderWizard();
+  document.querySelectorAll('#wiz-body [name]').forEach(e => { const s = saved.find(x => x[0] === e.name && (e.type !== 'checkbox' || x[2] === e.value)); if (s) { if (e.type === 'checkbox') e.checked = s[1]; else e.value = s[1]; } });
+}
+function wizBack() { if (step > 0) { step--; renderWizardKeep(); } }
+async function submitSignup() {
+  const btn = $('wiz-next'); btn.textContent = 'Creating...'; btn.disabled = true;
+  const o = collect($('wizForm')), ref = 'OUT-' + Math.random().toString(36).slice(2, 8).toUpperCase();
+  const r = reportResult(await postLead({ is_external_lead: true, onboarding_type: 'Bank Signup', reference: ref, plan, billing_cycle: cycle, source: 'Signup Portal', ...o, timestamp: new Date().toISOString() }), 'Workspace request received.');
+  btn.disabled = false;
+  if (!r.ok) { $('wiz-err').textContent = r.msg; $('wiz-err').classList.remove('is-hidden'); btn.textContent = 'Create workspace'; return; }
+  workspace = { ref, company: o.company_name, plan, cycle };
+  const p = PLANS.find(x => x.id === plan);
+  $('wiz-main').classList.add('is-hidden'); $('wiz-done').classList.remove('is-hidden');
+  $('wiz-done').innerHTML = `<h2 class="font-display text-2xl font-extrabold text-white mb-1">You are in, ${esc(o.full_name.split(' ')[0])}.</h2><p class="text-slate-400 text-sm mb-4">Workspace <b class="text-white font-mono">${ref}</b> for ${esc(o.company_name)} on the <b class="text-white">${p.name}</b> plan (${cycle}).</p><p class="text-sm mb-5 ${r.cls}">${esc(r.msg)}</p><h3 class="font-semibold text-white mb-3">Your onboarding checklist</h3><ol class="space-y-2 text-sm text-slate-300 mb-6">${['Verify your work email', 'Connect your CRM in System settings', 'Add your sending domain and invite your approving officers', 'Run a simulation with 10 sample leads', 'Review results with compliance, then go supervised live'].map((t, i) => `<li class="flex gap-3 bg-slate-950 border border-slate-800 rounded-xl p-3"><span class="sdot">${i + 1}</span><span class="pt-1">${t}</span></li>`).join('')}</ol><div class="flex flex-col sm:flex-row gap-3"><button class="btn btn-p" onclick="togglePortalAccess()">Open the demo portal</button><button class="btn btn-g" onclick="exitPortal()">Back to site</button></div>`;
+}
+function openSignup(pid) {
+  if (pid) plan = pid;
+  step = 0; showSection('signup');
+  $('wiz-main').classList.remove('is-hidden'); $('wiz-done').classList.add('is-hidden'); $('wizForm').reset();
+  renderWizard(); window.scrollTo(0, 0);
+}
+
+/* One-time reveal as sections scroll into view */
+const reveal = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); reveal.unobserve(en.target); } }), { threshold: .12 });
+document.querySelectorAll('.rv').forEach(el => reveal.observe(el));
+
+/* ---------- Navigation ---------- */
+function goHome(e) {
+  if (e) e.preventDefault();
+  if (view !== 'public') exitPortal();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  $('mobile-menu').classList.add('is-hidden');
+}
+function toggleMenu() {
+  const m = $('mobile-menu'), open = m.classList.toggle('is-hidden') === false;
+  $('menu-btn').setAttribute('aria-expanded', open);
+}
+function showSection(s) {
+  view = s;
+  ['public', 'login', 'portal', 'signup'].forEach(k => $(k + '-section').classList.toggle('is-hidden', k !== s));
+  const pub = s === 'public';
+  $('topnav').classList.toggle('is-hidden', !pub);
+  $('public-demo-btn').classList.toggle('is-hidden', !pub);
+  $('menu-btn').classList.toggle('is-hidden', !pub);
+  $('mobile-menu').classList.add('is-hidden');
+  $('portal-btn-label').textContent = { public: 'Login', login: 'Back', signup: 'Back', portal: 'Sign out' }[s];
+  $('portal-access-btn').setAttribute('aria-label', { public: 'Staff login', login: 'Back to site', signup: 'Back to site', portal: 'Sign out' }[s]);
+}
+function canApprove() { return !!(currentRole && ROLES[currentRole].approve); }
+function applyRole() {
+  const r = ROLES[currentRole];
+  document.querySelectorAll('.portal-nav-btn').forEach(b => b.classList.toggle('is-hidden', !r.tabs.includes(b.id.replace('pnav-', ''))));
+  $('role-badge').textContent = 'Signed in as ' + r.label;
+  const li = (cls, t, m) => `<li class="flex gap-2"><span class="${cls}">${m}</span><span>${t}</span></li>`;
+  $('role-info').innerHTML = `<p class="text-white font-semibold mb-3">${r.label}: ${r.summary}</p><div class="grid sm:grid-cols-2 gap-4"><ul class="space-y-1.5">${r.does.map(d => li('text-' + r.c + '-400', d, '&#10003;')).join('')}</ul><ul class="space-y-1.5 text-slate-500">${r.cannot.map(d => li('', d, '&#10005;')).join('')}</ul></div>`;
+  const p = PLANS.find(x => x.id === (workspace ? workspace.plan : 'growth'));
+  $('plan-card').innerHTML = `<div class="flex flex-wrap items-center justify-between gap-3"><div><span class="text-xs text-slate-400">Plan and billing${workspace ? ' for ' + esc(workspace.company) : ' (sample workspace)'}</span><div class="text-white font-semibold text-lg">${p.name} <span class="text-sm text-slate-400 font-normal">${money(p)}${p.price ? '/mo' : ''}</span></div><span class="text-xs text-slate-400">${p.lead}. Leads above the allowance cost $0.35 each. Messaging is billed at cost.</span></div><span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-semibold">${workspace ? 'Ref ' + workspace.ref : 'Active'}</span></div>`;
+  renderQueue();
+  switchPortalTab(r.tabs[0]);
+}
+function enterPortal(role) { currentRole = role; isPortalUnlocked = true; applyRole(); showSection('portal'); window.scrollTo(0, 0); }
+function exitPortal() { isPortalUnlocked = false; currentRole = null; showSection('public'); window.scrollTo(0, 0); }
+</script>
+<script>
+/* Header button: public -> login screen; any other screen -> back to site */
+function togglePortalAccess() {
+  if (view === 'public') { showSection('login'); pickRole(null); window.scrollTo(0, 0); }
+  else exitPortal();
+}
+function pickRole(key) {
+  selectedRole = key;
+  $('role-cards').innerHTML = Object.entries(ROLES).map(([k, r]) => `
+    <button type="button" onclick="pickRole('${k}')" aria-pressed="${k === key}" class="card lift text-left p-5 sm:p-6 ${k === key ? '!border-' + r.c + '-500 shadow-lg shadow-' + r.c + '-500/20' : ''}">
+      <h3 class="text-lg font-semibold text-white">${r.label}</h3>
+      <p class="text-sm text-slate-400 mt-1 mb-4">${r.summary}</p>
+      <ul class="space-y-1.5 text-xs text-slate-300">${r.does.map(d => `<li class="flex gap-2"><span class="text-${r.c}-400">&#10003;</span>${d}</li>`).join('')}${r.cannot.map(d => `<li class="flex gap-2 text-slate-500"><span>&#10005;</span>${d}</li>`).join('')}</ul>
+    </button>`).join('');
+  const form = $('login-panel');
+  form.classList.toggle('is-hidden', !key);
+  if (!key) return;
+  $('login-title').textContent = 'Sign in as ' + ROLES[key].label;
+  $('login-hint').textContent = CONFIG.SHOW_DEMO_HINT ? 'Demo login: ' + CONFIG.USERS[key].user + ' / ' + CONFIG.USERS[key].pin : '';
+  $('login-error').classList.add('is-hidden'); form.reset();
+  form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  $('login-user').focus({ preventScroll: true });
+}
+function submitLogin(e) {
+  e.preventDefault();
+  const u = CONFIG.USERS[selectedRole];
+  if (u && $('login-user').value.trim() === u.user && $('login-pin').value === u.pin) enterPortal(selectedRole);
+  else { $('login-error').classList.remove('is-hidden'); $('login-pin').select(); }
+}
+function switchPortalTab(id) {
+  if (!currentRole || !ROLES[currentRole].tabs.includes(id)) return;
+  document.querySelectorAll('.portal-tab').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.portal-nav-btn').forEach(el => el.classList.remove('on'));
+  $('ptab-' + id).classList.add('active');
+  $('pnav-' + id).classList.add('on');
+  $('pnav-' + id).scrollIntoView({ block: 'nearest', inline: 'center' });
+}
+
+/* Highlight the current section in the top nav */
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) document.querySelectorAll('.tn').forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id)); });
+}, { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('.tn').forEach(l => { const t = document.querySelector(l.getAttribute('href')); if (t) spy.observe(t); });
+
+function heroApprove() {
+  const b = $('hero-btn'), s = $('hero-state');
+  b.disabled = true; b.querySelector('span:last-child').textContent = 'Sent';
+  s.textContent = 'Approved by officer'; s.className = 'px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 font-semibold whitespace-nowrap';
+  setTimeout(() => {
+    b.disabled = false; b.querySelector('span:last-child').textContent = 'Approve and send';
+    s.textContent = 'Waiting for officer'; s.className = 'px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-400 font-semibold whitespace-nowrap';
+  }, 2500);
+}
+
+/* ---------- Sending data to n8n ---------- */
+async function postLead(payload) {
+  try {
+    const res = await fetch(CONFIG.LEAD_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    return res.ok ? { ok: true } : { ok: false, reason: 'Server replied ' + res.status };
+  } catch (e) { return { ok: false, reason: 'Could not reach the server' }; }
+}
+function reportResult(r, okMsg) {
+  if (r.ok) return { msg: okMsg, cls: 'text-emerald-400', ok: true };
+  if (CONFIG.DEMO_FALLBACK) return { msg: 'Demo mode: saved on this page only, not sent to n8n (' + r.reason + ').', cls: 'text-amber-400', ok: true };
+  return { msg: 'Could not send (' + r.reason + '). Check your connection and try again.', cls: 'text-rose-400', ok: false };
+}
+async function submitPublicDemo(e) {
+  e.preventDefault();
+  const btn = $('publicSubmitBtn'), status = $('publicStatusMsg');
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  const r = reportResult(await postLead({ is_external_lead: true, onboarding_type: 'Demo Request', source: 'Public Landing Page Form', ...collect($('n8nDemoForm')), timestamp: new Date().toISOString() }), 'Thank you. We have your request and will be in touch.');
+  status.className = 'text-sm text-center mt-2 ' + r.cls; status.textContent = r.msg;
+  if (r.ok) $('n8nDemoForm').reset();
+  btn.textContent = 'Request demo'; btn.disabled = false;
+}
+async function submitClientOnboarding(e) {
+  e.preventDefault();
+  const btn = $('clientOnboardBtn');
+  btn.textContent = 'Processing...'; btn.disabled = true;
+  const r = reportResult(await postLead({ is_external_lead: true, onboarding_type: 'Client Product Setup', source: 'Officer Portal', submitted_by: ROLES[currentRole].label, ...collect($('portalClientForm')), timestamp: new Date().toISOString() }), 'Lead submitted to the workflow.');
+  showPortalAlert(r.msg, r.ok ? 'success' : 'error');
+  if (r.ok) $('portalClientForm').reset();
+  btn.textContent = 'Submit lead'; btn.disabled = false;
+}
+
+/* ---------- Portal ---------- */
+let alertTimer;
+function showPortalAlert(msg, type = 'success') {
+  const box = $('portal-global-alert');
+  box.className = 'mb-6 p-4 rounded-xl text-sm font-mono border break-words ' + (type === 'success' ? 'bg-emerald-950/60 border-emerald-800 text-emerald-300' : 'bg-rose-950/60 border-rose-800 text-rose-300');
+  box.textContent = msg;
+  clearTimeout(alertTimer); alertTimer = setTimeout(() => box.classList.add('is-hidden'), 4000);
+}
+function saveBankSetup() { showPortalAlert('Profile saved for ' + $('setup-org').value + '.'); }
+function copyEndpoint() {
+  const v = $('crm_webhook_url').value;
+  (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject()).then(() => showPortalAlert('Endpoint copied.'), () => { $('crm_webhook_url').select(); showPortalAlert('Press Ctrl+C to copy the selected endpoint.'); });
+}
+function testCrmConnection() {
+  const btn = $('crmTestBtn'), provider = $('crm_provider').value;
+  if (!$('crm_api_key').value && provider !== 'custom') { showPortalAlert('Enter your CRM access key first.', 'error'); $('crm_api_key').focus(); return; }
+  const label = btn.innerHTML;
+  btn.textContent = 'Testing connection...'; btn.disabled = true;
+  setTimeout(() => { showPortalAlert('Demo: ' + provider + ' connection check passed (simulated).'); btn.innerHTML = label; btn.disabled = false; }, 1200);
+}
+
+let queue = [
+  { id: 1, lead: 'Tariq Mahmood (SME Exporter)', time: '10 mins ago', channel: 'Email', q: 'What are the working capital financing rates for textile exporters under the SBP scheme?', draft: 'Dear Tariq, Thank you for reaching out. Under our SME Export Support Facility, working capital rates are aligned with SBP concessionary guidelines. Would you be available for a brief call tomorrow?' },
+  { id: 2, lead: 'Sara Ahmed (Corporate Finance)', time: '25 mins ago', channel: 'Email', q: 'Can we schedule a presentation for digital payroll integration for 500+ employees?', draft: 'Hi Sara, absolutely! Our Corporate Solutions team would be glad to arrange a customized walkthrough. Please let us know your preferred slot this Thursday.' }
+];
+let logs = [
+  { t: '2026-10-16 13:12:15', id: 'LEAD-8922', ch: 'Email inbound', s: 'PENDING_OFFICER_REVIEW', c: 'text-amber-400' },
+  { t: '2026-10-16 13:10:02', id: 'LEAD-8921', ch: 'WhatsApp Business', s: 'DISPATCHED (SAFE_MODE)', c: 'text-emerald-400' }
+];
+let sentCount = 980;
+
+function renderQueue() {
+  $('portal-queue-container').innerHTML = queue.map(i => `
+    <div class="card p-5 sm:p-6 space-y-4">
+      <div class="flex flex-wrap justify-between items-center gap-1 border-b border-slate-800 pb-3"><span class="font-bold text-white text-sm">${esc(i.lead)}</span><span class="text-xs text-slate-400">${esc(i.time)}</span></div>
+      <p class="text-sm text-slate-300 bg-slate-950 p-3 rounded-xl border border-slate-800">“${esc(i.q)}”</p>
+      <label class="block text-xs text-slate-400" for="draft-${i.id}">AI draft (you can edit before sending)</label>
+      <textarea id="draft-${i.id}" rows="4" ${canApprove() ? '' : 'readonly'} oninput="queue.find(x=>x.id===${i.id}).draft=this.value" class="inp">${esc(i.draft)}</textarea>
+      <div class="${canApprove() ? 'flex' : 'is-hidden'} flex-col-reverse sm:flex-row sm:justify-end gap-3">
+        <button onclick="processPortalQueue(${i.id}, 'rejected')" class="btn btn-g !py-2.5 text-xs">Reject</button>
+        <button onclick="processPortalQueue(${i.id}, 'approved')" class="btn btn-p !py-2.5 text-xs">Approve and send</button>
+      </div>
+    </div>`).join('');
+  const n = queue.length;
+  $('portal-badge-count').textContent = n; $('portal-badge-count').classList.toggle('is-hidden', n === 0);
+  $('dash-pending-val').textContent = n; $('dash-sent').textContent = sentCount.toLocaleString();
+  $('portal-queue-empty').classList.toggle('is-hidden', n !== 0);
+}
+function renderLogs() {
+  $('log-body').innerHTML = logs.map(l => `<tr><td class="p-4 whitespace-nowrap">${l.t}</td><td class="p-4 text-blue-400">${l.id}</td><td class="p-4">${l.ch}</td><td class="p-4 ${l.c}">${l.s}</td><td class="p-4">${l.a || 'System'}</td></tr>`).join('');
+}
+function processPortalQueue(id, action) {
+  if (!canApprove()) return;
+  const item = queue.find(x => x.id === id); if (!item) return;
+  queue = queue.filter(x => x.id !== id);
+  const ok = action === 'approved';
+  if (ok) sentCount++;
+  logs.unshift({ t: new Date().toISOString().slice(0, 19).replace('T', ' '), id: 'LEAD-' + (9000 + id), ch: item.channel, a: ROLES[currentRole].label, s: ok ? 'APPROVED_AND_SENT' : 'REJECTED_BY_OFFICER', c: ok ? 'text-emerald-400' : 'text-rose-400' });
+  renderQueue(); renderLogs();
+  showPortalAlert(ok ? 'Reply to ' + item.lead.split(' (')[0] + ' approved and sent.' : 'Draft for ' + item.lead.split(' (')[0] + ' rejected.', ok ? 'success' : 'error');
+}
+renderQueue(); renderLogs(); renderPlans();
+</script>
+</body>
+</html>
